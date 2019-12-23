@@ -37,3 +37,112 @@ body{
 }
 
 // -end 滚动条样式
+
+//flex 常用样式 class
+.flex {
+  display: flex;
+}
+.flex1 { flex: 1 }
+.flex-row {
+  flex-direction: row;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-justcontent-center {
+  justify-content: center;
+}
+.flex-justcontent-between {
+  justify-content: space-between;
+}
+.flex-justitems-center {
+  justify-items: center;
+}
+.flex-alignitems-center {
+  align-items: center;
+}
+.flex-aligncontent-between {
+  align-content: space-between;
+}
+.flex-aligncontent-center {
+  align-content: center;
+}
+//-end flex 常用样式 class
+
+// 常用 padding 样式
+.pt5 {
+  padding-top: 5px;
+}
+.pb5 {
+  padding-bottom: 5px;
+}
+.pl5 {
+  padding-left: 5px;
+}
+.pr5 {
+  padding-right: 5px;
+}
+.pt10 {
+  padding-top: 10px;
+}
+.pb10 {
+  padding-bottom: 10px;
+}
+.pl10 {
+  padding-left: 10px;
+}
+.pr10 {
+  padding-right: 10px;
+}
+.pt20 {
+  padding-top: 20px;
+}
+.pb20 {
+  padding-bottom: 20px;
+}
+.pl20 {
+  padding-left: 20px;
+}
+.pr20 {
+  padding-right: 20px;
+}
+// -end
+
+// 常用 margin 样式
+.mt5 {
+  margin-top: 5px;
+}
+.mb5 {
+  margin-bottom: 5px;
+}
+.ml5 {
+  margin-left: 5px;
+}
+.mr5 {
+  margin-right: 5px;
+}
+.mt10 {
+  margin-top: 10px;
+}
+.mb10 {
+  margin-bottom: 10px;
+}
+.ml10 {
+  margin-left: 10px;
+}
+.mr10 {
+  margin-right: 10px;
+}
+.mt20 {
+  margin-top: 20px;
+}
+.mb20 {
+  margin-bottom: 20px;
+}
+.ml20 {
+  margin-left: 20px;
+}
+.mr20 {
+  margin-right: 20px;
+}
+// -end
