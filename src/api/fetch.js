@@ -7,7 +7,7 @@ axios.defaults.headers.post["Content-Type"] =
 // 创建axios实例
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL,
-  timeout: 15000
+  timeout: 5000
 });
 
 // request拦截器
