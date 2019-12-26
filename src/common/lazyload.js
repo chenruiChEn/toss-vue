@@ -13,7 +13,7 @@ parentclass 父级元素class名  滚动的父级
 v-lazy="url"
 data-parentclass="parentclass"
  */
-
+import imgUrls from '@/assets/down.gif'
 var lazyload = {
   install(vue, payload) {
     Array.prototype.remove = function(item) {
@@ -25,8 +25,8 @@ var lazyload = {
       }
     };
     // 默认值图片
-    var defaultImage = payload.defaultImage || "../static/logo.png";
-    var errorImage = payload.errorImage || "../static/logo.png";
+    var defaultImage = payload.defaultImage || imgUrls;
+    var errorImage = payload.errorImage || imgUrls;
     // 默认离可视区10px时加载图片
     var distanece = payload.scrollDistance || 60;
     // 收集未加载的图片

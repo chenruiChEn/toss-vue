@@ -1,0 +1,29 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<!--
+2013-9-30: Created.
+-->
+<svg>
+<metadata>
+Created by iconfont
+</metadata>
+<defs>
+
+<font id="iconfont" horiz-adv-x="1024" >
+  <font-face
+    font-family="iconfont"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="1024"
+    ascent="896"
+    descent="-128"
+  />
+    <missing-glyph />
+    
+    <glyph glyph-name="sky-file" unicode="&#58913;" d="M1021.296 97.58600000000001H2.704V699.76h942.8c41.92 0 75.944-33.596 75.944-74.992v-527.182h-0.152zM639.288 699.76c0 69.44-56.96 125.682-127.286 125.682H2.706V699.76h636.58zM129.992 265.414V642.466h764.02v-377.052zM1021.296 17.946000000000026V506.284c0 34.646-28.554 62.84-63.642 62.84H66.348c-35.088 0-63.642-28.194-63.642-62.84v-488.188c0-42.746 35.086-77.54 78.528-77.54H942.92c43.29-0.15 78.378 34.644 78.378 77.39z"  horiz-adv-x="1024" />
+
+    
+
+
+  </font>
+</defs></svg>

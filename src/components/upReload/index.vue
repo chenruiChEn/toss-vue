@@ -57,17 +57,13 @@ export default {
       timer: null
     };
   },
+  mounted(){
+    this.$refs.loadMoudle.addEventListener('scroll',this.judgeScrollBarToTheEnd)
+  },
+  beforeDestroy(){
+    this.$refs.loadMoudle.removeEventListener('scroll',this.judgeScrollBarToTheEnd)
+  },
   methods: {
-    touchStart(e) {
-      this.startY = e.targetTouches[0].pageY;
-    },
-    touchMove(e) {
-      if (e.targetTouches[0].pageY < this.startY) {
-        // 上拉
-        this.judgeScrollBarToTheEnd();
-      }
-    },
-
     // 判断滚动条是否到底
     judgeScrollBarToTheEnd() {
       if (this.timer) clearTimeout(this.timer);
@@ -80,13 +76,11 @@ export default {
             this.loadHandle();
           }
         }
-      }, 500);
+      }, 300);
     },
     loadHandle() {
       this.pullUpState = 2;
       this.isLoading = true;
-      this.page += 1;
-      this.$emit("update:page", this.page);
       this.$emit("load", this.loadDone);
     },
     loadDone() {

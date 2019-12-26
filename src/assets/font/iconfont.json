@@ -1,0 +1,16 @@
+{
+  "id": "1584559",
+  "name": "toss",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "12548738",
+      "name": "sky-file",
+      "font_class": "sky-file",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    }
+  ]
+}
