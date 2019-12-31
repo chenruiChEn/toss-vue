@@ -3827,6 +3827,11 @@ execa@^3.3.0:
     signal-exit "^3.0.2"
     strip-final-newline "^2.0.0"
 
+exif-js@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.npm.taobao.org/exif-js/download/exif-js-2.3.0.tgz#9d10819bf571f873813e7640241255ab9ce1a814"
+  integrity sha1-nRCBm/Vx+HOBPnZAJBJVq5zhqBQ=
+
 expand-brackets@^2.1.4:
   version "2.1.4"
   resolved "https://registry.npm.taobao.org/expand-brackets/download/expand-brackets-2.1.4.tgz#b77735e315ce30f6b6eff0f83b04151a22449622"
@@ -9741,6 +9746,13 @@ vscode-languageserver-types@^3.5.0:
   version "3.14.0"
   resolved "https://registry.npm.taobao.org/vscode-languageserver-types/download/vscode-languageserver-types-3.14.0.tgz#d3b5952246d30e5241592b6dde8280e03942e743"
   integrity sha1-07WVIkbTDlJBWStt3oKA4DlC50M=
+
+vue-cropper@0.3.6:
+  version "0.3.6"
+  resolved "https://registry.npm.taobao.org/vue-cropper/download/vue-cropper-0.3.6.tgz#d83de3d18ed2ab72e092c93850acd5f7b6d8fe36"
+  integrity sha1-2D3j0Y7Sq3Lgksk4UKzV97bY/jY=
+  dependencies:
+    exif-js "^2.3.0"
 
 vue-eslint-parser@^5.0.0:
   version "5.0.0"

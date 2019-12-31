@@ -9,18 +9,16 @@
         router
         active-text-color="#ffd04b"
       >
-        <template v-for="(item,index) in routes">
+        <template v-for="(item, index) in routes">
           <el-menu-item v-if="!item.hidden" :index="item.path" :key="index">
             <i class="el-icon-menu"></i>
-            <span slot="title">{{item.meta.title}}</span>
+            <span slot="title">{{ item.meta.title }}</span>
           </el-menu-item>
         </template>
       </el-menu>
     </div>
     <div class="app-main-box">
-      <div class="app-main-title">
-
-      </div>
+      <div class="app-main-title"></div>
       <div class="app-main-container">
         <router-view />
       </div>
@@ -29,7 +27,7 @@
 </template>
 
 <script>
-import router from '@/router'
+import router from "@/router";
 export default {
   name: "Layout",
   data() {
@@ -38,7 +36,7 @@ export default {
     };
   },
   created() {
-    this.routes = router.options.routes
+    this.routes = router.options.routes;
   },
   methods: {}
 };

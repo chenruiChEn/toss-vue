@@ -57,11 +57,17 @@ export default {
       timer: null
     };
   },
-  mounted(){
-    this.$refs.loadMoudle.addEventListener('scroll',this.judgeScrollBarToTheEnd)
+  mounted() {
+    this.$refs.loadMoudle.addEventListener(
+      "scroll",
+      this.judgeScrollBarToTheEnd
+    );
   },
-  beforeDestroy(){
-    this.$refs.loadMoudle.removeEventListener('scroll',this.judgeScrollBarToTheEnd)
+  beforeDestroy() {
+    this.$refs.loadMoudle.removeEventListener(
+      "scroll",
+      this.judgeScrollBarToTheEnd
+    );
   },
   methods: {
     // 判断滚动条是否到底

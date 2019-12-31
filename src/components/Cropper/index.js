@@ -1,4 +1,4 @@
-import cropper from './index.vue'
+import cropper from "./index.vue";
 
 // 导出组件
-export default cropper
+export default cropper;

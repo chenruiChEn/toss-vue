@@ -3,25 +3,21 @@
     <el-row :gutter="20">
       <el-col :span="18">
         <vue-cropper
-          class="img-container"
-          ref="cropper"
-          :view-mode="1"
-          drag-mode="move"
-          :zoomOnWheel="false"
-          :auto-crop-area="0.5"
-          :min-container-width="minWidth"
-          :min-container-height="minHeight"
-          :background="true"
-          :rotatable="true"
-          :src.sync="imgSrc"
-          :ready="cropImage"
-          :crop="cropImages"
-          :preview="preview"
-          :viewMode="viewMode"
-          :cropBoxResizable="cropBoxResizable"
-          alt="Source Image"
-        >
-        </vue-cropper>
+        ref="cropper"
+        :img="imgSrc"
+        :outputSize="option.size"
+        :outputType="option.outputType"
+        :info="true"
+        :full="option.full"
+        :canMoveBox="option.canMoveBox"
+        :original="option.original"
+        :autoCrop="option.autoCrop"
+        :fixed="option.fixed"
+        :fixedNumber="option.fixedNumber"
+        :centerBox="option.centerBox"
+        :infoTrue="option.infoTrue"
+        :fixedBox="option.fixedBox"
+        />
         <div class="cropper-button">
           <el-button-group>
             <el-button
@@ -121,7 +117,7 @@
   </div>
 </template>
 <script>
-import VueCropper from "./VueCropper";
+import VueCropper from "vue-cropper";
 export default {
   name: "sky-cropper",
   data: function() {
@@ -135,7 +131,25 @@ export default {
       isScaleY: false,
       preview: ".img-preview",
       pImgWidth: 0,
-      pImgHeight: 0
+      pImgHeight: 0,
+      option: {
+        img: "", // 裁剪图片的地址
+        info: true, // 裁剪框的大小信息
+        outputSize: 1, // 裁剪生成图片的质量
+        outputType: "jpeg", // 裁剪生成图片的格式
+        canScale: true, // 图片是否允许滚轮缩放
+        autoCrop: true, // 是否默认生成截图框
+        // autoCropWidth: 300, // 默认生成截图框宽度
+        // autoCropHeight: 200, // 默认生成截图框高度
+        fixedBox: true, // 固定截图框大小 不允许改变
+        fixed: true, // 是否开启截图框宽高固定比例
+        fixedNumber: [7, 5], // 截图框的宽高比例
+        full: true, // 是否输出原图比例的截图
+        canMoveBox: false, // 截图框能否拖动
+        original: false, // 上传图片按照原始比例渲染
+        centerBox: false, // 截图框是否被限制在图片里面
+        infoTrue: true // true 为展示真实输出图片宽高 false 展示看到的截图框宽高
+      }
     };
   },
   props: {
@@ -249,41 +263,16 @@ export default {
       this.refreshCrop();
     }
   },
-  mounted: function() {},
   components: {
-    VueCropper
+    vueCropper: VueCropper
   }
 };
 </script>
 
 <style lang="scss">
 .crop-wrappers {
-  max-height: 500px;
-  .img-container {
-    max-height: 420px;
-    overflow: hidden;
-  }
-  @font-face {
-    font-family: "ylbIconfont"; /* project id 428349 */
-    src: url("https://at.alicdn.com/t/font_428349_2pmgkk5l07eyu8fr.eot");
-    src: url("https://at.alicdn.com/t/font_428349_2pmgkk5l07eyu8fr.eot?#iefix")
-        format("embedded-opentype"),
-      url("https://at.alicdn.com/t/font_428349_2pmgkk5l07eyu8fr.woff")
-        format("woff"),
-      url("https://at.alicdn.com/t/font_428349_2pmgkk5l07eyu8fr.ttf")
-        format("truetype"),
-      url("https://at.alicdn.com/t/font_428349_2pmgkk5l07eyu8fr.svg#ylbIconfont")
-        format("svg");
-  }
   .clearfix {
     clear: both;
-  }
-  .ylbIconfont {
-    font-family: "ylbIconfont" !important;
-    font-size: 16px;
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
   .cropper-button {
     text-align: center;
@@ -314,7 +303,7 @@ export default {
   }
 
   .img-preview > img {
-    max-width: 100%;
+    max-height: 100%;
   }
 
   .preview-lg {

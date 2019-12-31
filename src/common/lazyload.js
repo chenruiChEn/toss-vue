@@ -13,7 +13,7 @@ parentclass 父级元素class名  滚动的父级
 v-lazy="url"
 data-parentclass="parentclass"
  */
-import imgUrls from '@/assets/down.gif'
+import imgUrls from "@/assets/down.gif";
 var lazyload = {
   install(vue, payload) {
     Array.prototype.remove = function(item) {

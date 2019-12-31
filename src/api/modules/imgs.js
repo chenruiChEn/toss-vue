@@ -18,20 +18,27 @@ const client = new OSS({
 });
 
 //上传图片
-export async function uploadImg(file,onProgress) {
+export async function uploadImg(file, onProgress) {
   return new Promise((resolve, reject) => {
     let ext = file.name.split(".").pop();
-    let path = `web-upload/${file.name.substring(0,8)}-${new Date().getTime()}.${ext}`
-    client.multipartUpload(path, file, {
-      progress: async function (p) {
-        onProgress && onProgress({
-          percent: Math.floor(p * 100)
-        })
-      }
-    }).then(function () {
-      resolve(path)
-    }).catch(function (err) {
-      reject(err)
-    });
+    let path = `web-upload/${file.name.substring(
+      0,
+      8
+    )}-${new Date().getTime()}.${ext}`;
+    client
+      .multipartUpload(path, file, {
+        progress: async function(p) {
+          onProgress &&
+            onProgress({
+              percent: Math.floor(p * 100)
+            });
+        }
+      })
+      .then(function() {
+        resolve(path);
+      })
+      .catch(function(err) {
+        reject(err);
+      });
   });
 }
