@@ -2793,7 +2793,7 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-cropperjs@^1.5.6:
+cropperjs@1.5.6:
   version "1.5.6"
   resolved "https://registry.npm.taobao.org/cropperjs/download/cropperjs-1.5.6.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcropperjs%2Fdownload%2Fcropperjs-1.5.6.tgz#82faf432bec709d828f2f7a96d1179198edaf0e2"
   integrity sha1-gvr0Mr7HCdgo8vepbRF5GY7a8OI=
@@ -3826,11 +3826,6 @@ execa@^3.3.0:
     p-finally "^2.0.0"
     signal-exit "^3.0.2"
     strip-final-newline "^2.0.0"
-
-exif-js@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.npm.taobao.org/exif-js/download/exif-js-2.3.0.tgz#9d10819bf571f873813e7640241255ab9ce1a814"
-  integrity sha1-nRCBm/Vx+HOBPnZAJBJVq5zhqBQ=
 
 expand-brackets@^2.1.4:
   version "2.1.4"
@@ -9746,13 +9741,6 @@ vscode-languageserver-types@^3.5.0:
   version "3.14.0"
   resolved "https://registry.npm.taobao.org/vscode-languageserver-types/download/vscode-languageserver-types-3.14.0.tgz#d3b5952246d30e5241592b6dde8280e03942e743"
   integrity sha1-07WVIkbTDlJBWStt3oKA4DlC50M=
-
-vue-cropper@0.3.6:
-  version "0.3.6"
-  resolved "https://registry.npm.taobao.org/vue-cropper/download/vue-cropper-0.3.6.tgz#d83de3d18ed2ab72e092c93850acd5f7b6d8fe36"
-  integrity sha1-2D3j0Y7Sq3Lgksk4UKzV97bY/jY=
-  dependencies:
-    exif-js "^2.3.0"
 
 vue-eslint-parser@^5.0.0:
   version "5.0.0"

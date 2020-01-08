@@ -27,6 +27,16 @@ export default [
         },
         component: () =>
           import(/* webpackChunkName: "home" */ "@/views/home/index.vue")
+      },
+      {
+        path: "/demo",
+        name: "demo",
+        meta: {
+          title: "首页",
+          icon: "demo"
+        },
+        component: () =>
+          import(/* webpackChunkName: "home" */ "@/views/home/demo.vue")
       }
     ]
   }

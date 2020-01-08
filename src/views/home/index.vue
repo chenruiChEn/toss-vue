@@ -1,6 +1,6 @@
 <template>
   <div class="home-main-box">
-    <sky-cropper :imgSrc="cropperImg" />
+    <sky-cropper />
     <sky-up-reload class="sky-up-reload flex flex-row" @load="loadHandle">
       <div class="img-card" v-for="item in list" :key="item.id">
         <div class="btn mb10">

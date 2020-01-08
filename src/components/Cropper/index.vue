@@ -3,20 +3,21 @@
     <el-row :gutter="20">
       <el-col :span="18">
         <vue-cropper
-        ref="cropper"
-        :img="imgSrc"
-        :outputSize="option.size"
-        :outputType="option.outputType"
-        :info="true"
-        :full="option.full"
-        :canMoveBox="option.canMoveBox"
-        :original="option.original"
-        :autoCrop="option.autoCrop"
-        :fixed="option.fixed"
-        :fixedNumber="option.fixedNumber"
-        :centerBox="option.centerBox"
-        :infoTrue="option.infoTrue"
-        :fixedBox="option.fixedBox"
+          class="img-container"
+          ref="cropper"
+          drag-mode="move"
+          :zoomOnWheel="false"
+          :auto-crop-area="0.5"
+          :min-container-width="minWidth"
+          :min-container-height="minHeight"
+          :background="true"
+          :rotatable="true"
+          :src.sync="imgSrc"
+          :ready="cropImage"
+          :crop="cropImages"
+          :viewMode="viewMode"
+          :cropBoxResizable="cropBoxResizable"
+          alt="Source Image"
         />
         <div class="cropper-button">
           <el-button-group>
@@ -105,21 +106,25 @@
               title="重置"
               ><i class="ylbIconfont">&#xe613;</i>
             </el-button>
-            <!--<el-button size="mini" class="button-upload" type="primary" title="上传">-->
-            <!--<i class="ylbIconfont">&#xe6c2;</i>-->
-            <!--<input type="file" id="uploads" accept="image/png, image/jpeg, image/gif, image/jpg"-->
-            <!--@change="uploadImg($event, 1)">-->
-            <!--</el-button>-->
           </el-button-group>
+        </div>
+      </el-col>
+      <el-col :span="6">
+        <div class="docs-preview clearfix">
+          <div class="img-preview preview-lg"></div>
+        </div>
+        <div style="clear:both;">
+          尺寸： 宽{{ pImgWidth }}px 高{{ pImgHeight }}px
         </div>
       </el-col>
     </el-row>
   </div>
 </template>
 <script>
-import VueCropper from "vue-cropper";
+import VueCropper from './VueCropper'
 export default {
   name: "sky-cropper",
+  components: { VueCropper },
   data: function() {
     return {
       model: false,
@@ -129,27 +134,10 @@ export default {
       previews: {},
       isScaleX: false,
       isScaleY: false,
-      preview: ".img-preview",
       pImgWidth: 0,
       pImgHeight: 0,
-      option: {
-        img: "", // 裁剪图片的地址
-        info: true, // 裁剪框的大小信息
-        outputSize: 1, // 裁剪生成图片的质量
-        outputType: "jpeg", // 裁剪生成图片的格式
-        canScale: true, // 图片是否允许滚轮缩放
-        autoCrop: true, // 是否默认生成截图框
-        // autoCropWidth: 300, // 默认生成截图框宽度
-        // autoCropHeight: 200, // 默认生成截图框高度
-        fixedBox: true, // 固定截图框大小 不允许改变
-        fixed: true, // 是否开启截图框宽高固定比例
-        fixedNumber: [7, 5], // 截图框的宽高比例
-        full: true, // 是否输出原图比例的截图
-        canMoveBox: false, // 截图框能否拖动
-        original: false, // 上传图片按照原始比例渲染
-        centerBox: false, // 截图框是否被限制在图片里面
-        infoTrue: true // true 为展示真实输出图片宽高 false 展示看到的截图框宽高
-      }
+      cropperUrl: null,
+      cropper: null
     };
   },
   props: {
@@ -167,12 +155,11 @@ export default {
     },
     imgSrc: {
       type: String,
-      default:
-        "https://bpic.588ku.com//back_origin_min_pic/19/07/03/8631e2998c1cf947f44a1f0bb545b4dd.jpg"
+      default: "http://m2.cr89.top/pics/1575711947574-2-0.jpg"
     },
     viewMode: {
       type: Number,
-      default: 0
+      default: 1
     },
     cropBoxResizable: {
       //裁剪框是否可缩放
@@ -262,15 +249,17 @@ export default {
       reader.readAsArrayBuffer(file);
       this.refreshCrop();
     }
-  },
-  components: {
-    vueCropper: VueCropper
   }
 };
 </script>
 
 <style lang="scss">
 .crop-wrappers {
+  max-height: 500px;
+  .img-container {
+    max-height: 420px;
+    overflow: hidden;
+  }
   .clearfix {
     clear: both;
   }
@@ -303,7 +292,7 @@ export default {
   }
 
   .img-preview > img {
-    max-height: 100%;
+    max-width: 100%;
   }
 
   .preview-lg {
