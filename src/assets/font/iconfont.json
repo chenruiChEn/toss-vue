@@ -11,6 +11,90 @@
       "font_class": "sky-file",
       "unicode": "e621",
       "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "12745186",
+      "name": "fangda",
+      "font_class": "fangda",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "12745189",
+      "name": "suoxiao",
+      "font_class": "suoxiao",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "12745196",
+      "name": "up",
+      "font_class": "up",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "12745207",
+      "name": "down",
+      "font_class": "down",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "12745296",
+      "name": "left",
+      "font_class": "left",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "12745374",
+      "name": "right",
+      "font_class": "right",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "12745538",
+      "name": "rotate",
+      "font_class": "rotate",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "12746072",
+      "name": "leftRotate",
+      "font_class": "leftRotate",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "12746136",
+      "name": "rightRotate",
+      "font_class": "rightRotate",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "12746137",
+      "name": "updown",
+      "font_class": "updown",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "12746139",
+      "name": "leftright",
+      "font_class": "leftright",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "12746140",
+      "name": "reset",
+      "font_class": "reset",
+      "unicode": "e630",
+      "unicode_decimal": 58928
     }
   ]
 }

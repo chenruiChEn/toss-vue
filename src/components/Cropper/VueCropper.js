@@ -9,7 +9,7 @@ const CropperComponent = Vue.extend({
         attrs: {
           src: this.src,
           alt: this.alt || "image",
-          style: "max-height: 420px;max-width: 100%;"
+          style: "max-height: 80vh;"
         },
         style: this.imgStyle
       })

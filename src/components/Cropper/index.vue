@@ -1,127 +1,141 @@
 <template>
-  <div class="crop-wrappers">
-    <el-row :gutter="20">
-      <el-col :span="18">
-        <vue-cropper
-          class="img-container"
-          ref="cropper"
-          drag-mode="move"
-          :zoomOnWheel="false"
-          :auto-crop-area="0.5"
-          :min-container-width="minWidth"
-          :min-container-height="minHeight"
-          :background="true"
-          :rotatable="true"
-          :src.sync="imgSrc"
-          :ready="cropImage"
-          :crop="cropImages"
-          :viewMode="viewMode"
-          :cropBoxResizable="cropBoxResizable"
-          alt="Source Image"
-        />
-        <div class="cropper-button">
-          <el-button-group>
-            <el-button
-              size="mini"
-              @click="changeScale(1)"
-              type="primary"
-              title="放大"
-              ><i class="ylbIconfont">&#xe635;</i>
-            </el-button>
-            <el-button
-              size="mini"
-              @click="changeScale(-1)"
-              type="primary"
-              title="缩小"
-              ><i class="ylbIconfont">&#xe62d;</i></el-button
-            >
-          </el-button-group>
-          <el-button-group>
-            <el-button
-              size="mini"
-              @click="move(0, -10)"
-              type="primary"
-              title="上移"
-              ><i class="ylbIconfont">&#xe600;</i>
-            </el-button>
-            <el-button
-              size="mini"
-              @click="move(0, 10)"
-              type="primary"
-              title="下移"
-              ><i class="ylbIconfont">&#xe602;</i>
-            </el-button>
-            <el-button
-              size="mini"
-              @click="move(-10, 0)"
-              type="primary"
-              title="左移"
-              ><i class="ylbIconfont">&#xe611;</i>
-            </el-button>
-            <el-button
-              size="mini"
-              @click="move(10, 0)"
-              type="primary"
-              title="右移"
-              ><i class="ylbIconfont">&#xe601;</i>
-            </el-button>
-          </el-button-group>
-          <el-button-group>
-            <el-button
-              size="mini"
-              @click="rotate(45)"
-              type="primary"
-              title="左旋45度"
-              ><i class="ylbIconfont">&#xe63c;</i>
-            </el-button>
-            <el-button
-              size="mini"
-              @click="rotate(-45)"
-              type="primary"
-              title="右旋45度"
-              ><i class="ylbIconfont">&#xe6ae;</i>
-            </el-button>
-          </el-button-group>
-          <el-button-group>
-            <el-button
-              size="mini"
-              @click="scaleX"
-              type="primary"
-              title="左右对调"
-              ><i class="ylbIconfont">&#xe739;</i>
-            </el-button>
-            <el-button
-              size="mini"
-              @click="scaleY"
-              type="primary"
-              title="上下对调"
-              ><i class="ylbIconfont">&#xe630;</i>
-            </el-button>
-          </el-button-group>
-          <el-button-group>
-            <el-button
-              size="mini"
-              @click="refreshCrop"
-              type="primary"
-              title="重置"
-              ><i class="ylbIconfont">&#xe613;</i>
-            </el-button>
-          </el-button-group>
-        </div>
-      </el-col>
-      <el-col :span="6">
-        <div class="docs-preview clearfix">
-          <div class="img-preview preview-lg"></div>
-        </div>
-        <div style="clear:both;">
-          尺寸： 宽{{ pImgWidth }}px 高{{ pImgHeight }}px
-        </div>
-      </el-col>
-    </el-row>
-  </div>
+  <el-dialog title="提示" :visible.sync="visible" top="2vh" width="90%">
+    <div class="crop-wrappers">
+      <el-row :gutter="20">
+        <el-col :span="18">
+          <vue-cropper
+            class="img-container"
+            ref="cropper"
+            drag-mode="move"
+            :zoomOnWheel="false"
+            :auto-crop-area="0.5"
+            :min-container-width="minWidth"
+            :min-container-height="minHeight"
+            :background="true"
+            :rotatable="true"
+            :src.sync="imgSrc"
+            :ready="cropImage"
+            :crop="cropImages"
+            :viewMode="viewMode"
+            :cropBoxResizable="cropBoxResizable"
+            alt="Source Image"
+          />
+          <div class="cropper-button">
+            <el-button-group>
+              <el-button
+                size="mini"
+                @click="changeScale(1)"
+                type="primary"
+                title="放大"
+              >
+                <i class="iconfont icon iconfangda" />
+              </el-button>
+              <el-button
+                size="mini"
+                @click="changeScale(-1)"
+                type="primary"
+                title="缩小"
+              >
+                <i class="iconfont icon iconsuoxiao" />
+              </el-button>
+            </el-button-group>
+            <el-button-group>
+              <el-button
+                size="mini"
+                @click="move(0, -10)"
+                type="primary"
+                title="上移"
+              >
+                <i class="iconfont icon iconup" />
+              </el-button>
+              <el-button
+                size="mini"
+                @click="move(0, 10)"
+                type="primary"
+                title="下移"
+              >
+                <i class="iconfont icon icondown" />
+              </el-button>
+              <el-button
+                size="mini"
+                @click="move(-10, 0)"
+                type="primary"
+                title="左移"
+              >
+                <i class="iconfont icon iconleft" />
+              </el-button>
+              <el-button
+                size="mini"
+                @click="move(10, 0)"
+                type="primary"
+                title="右移"
+              >
+                <i class="iconfont icon iconright" />
+              </el-button>
+            </el-button-group>
+            <el-button-group>
+              <el-button
+                size="mini"
+                @click="rotate(45)"
+                type="primary"
+                title="左旋45度"
+              >
+                <i class="iconfont icon iconrotate" />
+              </el-button>
+              <!--<el-button-->
+              <!--size="mini"-->
+              <!--@click="rotate(-45)"-->
+              <!--type="primary"-->
+              <!--title="右旋45度"-->
+              <!--&gt;<i class="ylbIconfont">&#xe6ae;</i>-->
+              <!--</el-button>-->
+            </el-button-group>
+            <el-button-group>
+              <el-button
+                size="mini"
+                @click="scaleX"
+                type="primary"
+                title="左右对调"
+                ><i class="ylbIconfont">&#xe739;</i>
+              </el-button>
+              <el-button
+                size="mini"
+                @click="scaleY"
+                type="primary"
+                title="上下对调"
+                ><i class="ylbIconfont">&#xe630;</i>
+              </el-button>
+            </el-button-group>
+            <el-button-group>
+              <el-button
+                size="mini"
+                @click="refreshCrop"
+                type="primary"
+                title="重置"
+                ><i class="ylbIconfont">&#xe613;</i>
+              </el-button>
+            </el-button-group>
+          </div>
+        </el-col>
+        <el-col :span="6">
+          <div class="docs-preview clearfix">
+            <div class="img-preview preview-lg"></div>
+          </div>
+          <div style="clear:both;">
+            尺寸： 宽{{ pImgWidth }}px 高{{ pImgHeight }}px
+          </div>
+        </el-col>
+      </el-row>
+    </div>
+    <span slot="footer" class="dialog-footer">
+      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button type="primary" @click="confirm">确 定</el-button>
+    </span>
+  </el-dialog>
 </template>
 <script>
-import VueCropper from './VueCropper'
+import VueCropper from "./VueCropper";
+import { upload } from '@/api/modules/imgs'
 export default {
   name: "sky-cropper",
   components: { VueCropper },
@@ -165,7 +179,8 @@ export default {
       //裁剪框是否可缩放
       type: Boolean,
       default: true
-    }
+    },
+    visible: Boolean
   },
   methods: {
     cropImages(v) {
@@ -181,7 +196,44 @@ export default {
       let getImg = this.$refs.cropper.getCroppedCanvas();
       let imgs = getImg ? getImg.toDataURL() : "";
       this.cropImg = imgs;
-      this.$emit("getCropperImg", imgs);
+    },
+    confirm() {
+      if (this.cropImg) {
+        let toBlob = function(urlData, fileType) {
+          let bytes = window.atob(urlData);
+          let n = bytes.length;
+          let u8arr = new Uint8Array(n);
+          while (n--) {
+            u8arr[n] = bytes.charCodeAt(n);
+          }
+          return new Blob([u8arr], { type: fileType });
+        }
+
+        const urlData = this.cropImg;
+        const base64 = urlData.split(",").pop();
+        const fileType = urlData
+          .split(";")
+          .shift()
+          .split(":")
+          .pop();
+
+        // base64转blob
+        const blob = toBlob(base64, fileType);
+
+        // blob转arrayBuffer
+        const reader = new FileReader();
+        reader.readAsArrayBuffer(blob);
+        reader.onload = function(event) {
+          // 文件名
+        const objectKey = `web-upload/${new Date().getTime()}.${fileType.split('/').pop()}`;
+
+        // arrayBuffer转Buffer
+        upload(objectKey,event).then(res=>{
+          console.log(res);
+        })
+
+        };
+      }
     },
     rotate(num) {
       // guess what this does :)
@@ -255,9 +307,8 @@ export default {
 
 <style lang="scss">
 .crop-wrappers {
-  max-height: 500px;
+  height: 80vh;
   .img-container {
-    max-height: 420px;
     overflow: hidden;
   }
   .clearfix {
@@ -315,5 +366,15 @@ export default {
     margin-right: 0;
     width: 2rem;
   }
+}
+.el-dialog__header,
+.el-dialog__body,
+.el-dialog__footer {
+  padding: 10px;
+}
+.el-dialog__wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 </style>

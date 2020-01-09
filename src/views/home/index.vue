@@ -1,6 +1,6 @@
 <template>
   <div class="home-main-box">
-    <sky-cropper />
+    <sky-cropper :visible.sync="dialogVisible" />
     <sky-up-reload class="sky-up-reload flex flex-row" @load="loadHandle">
       <div class="img-card" v-for="item in list" :key="item.id">
         <div class="btn mb10">
@@ -10,7 +10,7 @@
             class="ml10"
             icon="el-icon-edit"
             size="mini"
-            @click="cropperImg = item.url"
+            @click="editImg(item)"
             >编辑</el-button
           >
         </div>
@@ -32,9 +32,6 @@
     >
       <img :src="prevImg" />
     </div>
-    <!--<div v-if="cropperImg" @click="cropperImg = null" class="dialog-box flex flex-justcontent-center flex-alignitems-center">-->
-
-    <!--</div>-->
   </div>
 </template>
 
@@ -48,7 +45,7 @@ export default {
         page_num: 1,
         total: 0
       },
-      dialogVisible: true,
+      dialogVisible: false,
       list: [],
       prevImg: null,
       cropperImg: null
@@ -66,6 +63,10 @@ export default {
     this.getImg();
   },
   methods: {
+    editImg(item){
+      this.cropperImg = item.url
+      this.dialogVisible = true
+    },
     getImg(fn) {
       this.$apis.imgs.getImgsList({ type: "2", ...this.pageInfo }).then(res => {
         let list = res.data.list.map(v => {

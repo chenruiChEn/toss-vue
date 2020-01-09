@@ -42,3 +42,17 @@ export async function uploadImg(file, onProgress) {
       });
   });
 }
+
+//上传图片
+export async function upload(path,event) {
+  return new Promise((resolve, reject) => {
+    const buffer = new OSS.Buffer(event.target.result);
+    client.put(path, buffer)
+      .then(function() {
+        resolve(path);
+      })
+      .catch(function(err) {
+        reject(err);
+      });
+  });
+}
