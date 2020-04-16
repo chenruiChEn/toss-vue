@@ -10,11 +10,30 @@ export function getImgsList(params) {
   });
 }
 
+//获取图片列表
+export function putImg(params) {
+  return request({
+    url: "/imgs",
+    method: "put",
+    params
+  });
+}
+
+//获取图片列表
+export function deleteImg(params) {
+  return request({
+    url: "/imgs",
+    method: "delete",
+    params
+  });
+}
+
 const client = new OSS({
-  endpoint: "oss-cn-hangzhou",
-  accessKeyId: "LTAIlWpo381YTD4Z",
-  accessKeySecret: "9bnpDVMinmDbj1Jge2TQKdOb7P5xYx",
-  bucket: "skychen"
+  region: 'oss-cn-hangzhou',
+  accessKeyId: 'LTAIlWpo381YTD4Z',
+  accessKeySecret: '9bnpDVMinmDbj1Jge2TQKdOb7P5xYx',
+  secure: true,
+  bucket: 'skychen'
 });
 
 //上传图片
@@ -38,6 +57,7 @@ export async function uploadImg(file, onProgress) {
         resolve(path);
       })
       .catch(function(err) {
+        console.log(err);
         reject(err);
       });
   });

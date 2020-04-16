@@ -1,8 +1,8 @@
 <template>
   <div class="home-main-box">
-    <sky-cropper :visible.sync="dialogVisible" />
+    <sky-cropper :visible.sync="dialogVisible" :imgSrc="cropperImg" @handle="handle" />
     <sky-up-reload class="sky-up-reload flex flex-row" @load="loadHandle">
-      <div class="img-card" v-for="item in list" :key="item.id">
+      <div class="img-card" v-for="(item,index) in list" :key="item.url">
         <div class="btn mb10">
           <el-checkbox v-model="item.checked" />
           <el-button
@@ -10,12 +10,16 @@
             class="ml10"
             icon="el-icon-edit"
             size="mini"
-            @click="editImg(item)"
-            >编辑</el-button
-          >
+            @click="editImg(item)">编辑</el-button>
+          <el-button
+                  type="danger"
+                  class="ml10"
+                  icon="el-icon-edit"
+                  size="mini"
+                  @click="deleteImg(item,index)">删除</el-button>
         </div>
         <img
-          v-lazy="item.src"
+          v-lazy="item.url"
           @click="prevImg = item.url"
           data-parentclass="sky-up-reload"
         />
@@ -48,7 +52,8 @@ export default {
       dialogVisible: false,
       list: [],
       prevImg: null,
-      cropperImg: null
+      cropperImg: null,
+      editId: null
     };
   },
   computed: {
@@ -63,9 +68,24 @@ export default {
     this.getImg();
   },
   methods: {
+    handle(url){
+      this.$apis.imgs.putImg({ id: this.editId, url }).then(() => {
+        this.editId = null
+        this.cropperImg = null
+        this.dialogVisible = false
+        this.getImg();
+      });
+    },
     editImg(item){
+      this.editId = item.id
       this.cropperImg = item.url
       this.dialogVisible = true
+    },
+    deleteImg(item,index){
+      this.editId = item.id
+      this.$apis.imgs.deleteImg({ id: this.editId }).then(() => {
+        this.list.splice(index,1)
+      });
     },
     getImg(fn) {
       this.$apis.imgs.getImgsList({ type: "2", ...this.pageInfo }).then(res => {

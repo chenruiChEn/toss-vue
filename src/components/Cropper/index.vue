@@ -135,7 +135,7 @@
 </template>
 <script>
 import VueCropper from "./VueCropper";
-import { upload } from '@/api/modules/imgs'
+import { uploadImg } from '@/api/modules/imgs'
 export default {
   name: "sky-cropper",
   components: { VueCropper },
@@ -169,7 +169,7 @@ export default {
     },
     imgSrc: {
       type: String,
-      default: "http://m2.cr89.top/pics/1575711947574-2-0.jpg"
+      default: ""
     },
     viewMode: {
       type: Number,
@@ -208,7 +208,12 @@ export default {
           }
           return new Blob([u8arr], { type: fileType });
         }
-
+        //将blob转换为file
+        let blobToFile = function(theBlob, fileName) {
+          theBlob.lastModifiedDate = new Date();
+          theBlob.name = fileName;
+          return theBlob;
+        }
         const urlData = this.cropImg;
         const base64 = urlData.split(",").pop();
         const fileType = urlData
@@ -216,23 +221,12 @@ export default {
           .shift()
           .split(":")
           .pop();
-
         // base64转blob
         const blob = toBlob(base64, fileType);
-
-        // blob转arrayBuffer
-        const reader = new FileReader();
-        reader.readAsArrayBuffer(blob);
-        reader.onload = function(event) {
-          // 文件名
-        const objectKey = `web-upload/${new Date().getTime()}.${fileType.split('/').pop()}`;
-
-        // arrayBuffer转Buffer
-        upload(objectKey,event).then(res=>{
-          console.log(res);
+        let file = blobToFile(blob,`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDay()}--${new Date().getTime()}.png`)
+        uploadImg(file).then(res=>{
+          this.$emit("handle",res);
         })
-
-        };
       }
     },
     rotate(num) {
