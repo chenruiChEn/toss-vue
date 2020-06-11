@@ -1,14 +1,5 @@
 import Layout from "@/layout/Layout.vue";
 export default [
-  // {
-  //   path: '/login',
-  //   name: 'login',
-  //   component: () =>
-  //     import(/* webpackChunkName: "login" */ '@/views/login/login.vue'),
-  //   meta: {
-  //     auth: false
-  //   }
-  // },
   {
     path: "/index",
     name: "home",
@@ -37,6 +28,16 @@ export default [
         },
         component: () =>
           import(/* webpackChunkName: "home" */ "@/views/home/demo.vue")
+      },
+      {
+        path: "/demo2",
+        name: "demo2",
+        meta: {
+          title: "首页2",
+          icon: "demo2"
+        },
+        component: () =>
+          import(/* webpackChunkName: "home" */ "@/views/home/demo2.vue")
       }
     ]
   }
