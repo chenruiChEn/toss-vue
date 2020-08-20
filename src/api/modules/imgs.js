@@ -30,8 +30,8 @@ export function deleteImg(params) {
 
 const client = new OSS({
   region: 'oss-cn-hangzhou',
-  accessKeyId: 'LTAIlWpo381YTD4Z',
-  accessKeySecret: '9bnpDVMinmDbj1Jge2TQKdOb7P5xYx',
+  accessKeyId: '',
+  accessKeySecret: '',
   secure: true,
   bucket: 'skychen'
 });
